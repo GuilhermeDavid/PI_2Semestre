@@ -40,7 +40,7 @@ public class TelaCadastroClienteController implements Initializable {
     @FXML
     private TextField txtEndereco;
     @FXML
-    private TextField txtEnderecoNum;
+    public TextField txtEnderecoNum;
     @FXML
     private TextField txtPontoReferencia;
     @FXML
@@ -118,10 +118,7 @@ public class TelaCadastroClienteController implements Initializable {
         comboEstado.getItems().add("RR");
         comboEstado.getItems().add("SC");
         comboEstado.getItems().add("SP");
-        comboEstado.getItems().add("TO");
-     
-        
-
+        comboEstado.getItems().add("TO");    
     }    
 
     @FXML
@@ -178,7 +175,7 @@ public class TelaCadastroClienteController implements Initializable {
     }
 
     @FXML
-    private void teste(KeyEvent event) {
+    private void formatarCpf(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.TAB ) {
           
             String bloco1 = txtCpf.getText().substring(0, 3);
@@ -189,6 +186,23 @@ public class TelaCadastroClienteController implements Initializable {
             String cpfFormatado = bloco1 + "." + bloco2+ "." + bloco3+ "-" + bloco4;
             
             txtCpf.setText(cpfFormatado);            
-        }     
+        }   
+    }
+
+    @FXML
+    private void formatarRg(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.TAB ) {
+          
+            
+            String bloco1 = txtRg.getText().substring(0, 2);
+            String bloco2 = txtRg.getText().substring(2, 5);
+            String bloco3 = txtRg.getText().substring(5, 8);
+            String bloco4 = txtRg.getText().substring(8, 9);
+            
+            String rgFormatado = bloco1 + "." + bloco2+ "." + bloco3+ "-" + bloco4;
+            
+            txtRg.setText(rgFormatado);  
+            
+        }
     }
 }

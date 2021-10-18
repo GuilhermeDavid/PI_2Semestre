@@ -20,8 +20,8 @@
                <children>
                   <TextField fx:id="txtNome" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="207.0" promptText="Nome" />
                   <TextField fx:id="txtSobrenome" layoutX="281.0" layoutY="23.0" prefHeight="25.0" prefWidth="380.0" promptText="Sobrenome" />
-                  <TextField fx:id="txtRg" layoutX="480.0" layoutY="69.0" prefHeight="25.0" prefWidth="182.0" promptText="RG" />
-                  <TextField fx:id="txtCpf" layoutX="281.0" layoutY="69.0" onKeyPressed="#teste" prefHeight="25.0" prefWidth="182.0" promptText="CPF" />
+                  <TextField fx:id="txtRg" layoutX="480.0" layoutY="69.0" onKeyPressed="#formatarRg" prefHeight="25.0" prefWidth="182.0" promptText="RG" />
+                  <TextField fx:id="txtCpf" layoutX="281.0" layoutY="69.0" onKeyPressed="#formatarCpf" prefHeight="25.0" prefWidth="182.0" promptText="CPF" />
                   <ComboBox fx:id="comboCivil" layoutX="14.0" layoutY="129.0" onAction="#civilAction" prefHeight="25.0" prefWidth="166.0" promptText="Estado Civil" />
                   <ComboBox fx:id="comboGenero" layoutX="14.0" layoutY="176.0" onAction="#generoAction" prefHeight="25.0" prefWidth="166.0" promptText="Gênero" />
                   <TextField fx:id="txtOutroEC" disable="true" layoutX="271.0" layoutY="129.0" prefHeight="25.0" prefWidth="138.0" promptText="Estado Civil" />

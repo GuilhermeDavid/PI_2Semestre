@@ -35,5 +35,10 @@ public class TelaPrincipalController implements Initializable {
         System.exit(0);
         
     }
-   
+
+    @FXML
+    private void abrirTelaProdutos(ActionEvent event) throws IOException {
+        App.setRoot("telaProdutos", container);
+    }
+    
 }

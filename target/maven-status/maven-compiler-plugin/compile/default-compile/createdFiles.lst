@@ -3,7 +3,9 @@ br\senac\pi\TelaCadastroClienteController.class
 br\senac\pi\WebServiceCep$Xml$7.class
 br\senac\pi\WebServiceCep$XmlEnums.class
 br\senac\pi\WebServiceCep$Xml$6.class
+br\senac\pi\LinhaTabelaProdutos.class
 br\senac\pi\WebServiceCep$IterableElement.class
+br\senac\pi\TelaProdutosController.class
 br\senac\pi\WebServiceCep$Xml$2.class
 br\senac\pi\App.class
 module-info.class

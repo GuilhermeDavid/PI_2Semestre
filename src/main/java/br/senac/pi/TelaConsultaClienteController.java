@@ -1,6 +1,7 @@
 
 package br.senac.pi;
 
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -32,6 +33,8 @@ public class TelaConsultaClienteController implements Initializable {
 
     @FXML
     private void consultarCliente(ActionEvent event) {
+        
+        
     }
 
     

@@ -16,7 +16,10 @@
                   <MenuItem mnemonicParsing="false" onAction="#abrirColsultaCliente" text="Consultar" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Produtos" />
+            <Menu mnemonicParsing="false" text="Produtos">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#abrirTelaProdutos" text="Produtos" />
+               </items></Menu>
             <Menu mnemonicParsing="false" text="Venda" />
             <Menu mnemonicParsing="false" text="Relatorio" />
             <Menu mnemonicParsing="false" text="Sair">
