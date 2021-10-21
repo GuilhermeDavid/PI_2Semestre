@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="770.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.pi.TelaProdutosController">
@@ -20,14 +21,22 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="txtNomeProduto" layoutX="14.0" layoutY="33.0" promptText="Nome" />
-      <TextField fx:id="txtMarcaProduto" layoutX="193.0" layoutY="33.0" promptText="Marca" />
-      <TextField fx:id="txtTipoProduto" layoutX="372.0" layoutY="33.0" promptText="Tipo" />
-      <TextField fx:id="txtQuantidadeProduto" layoutX="560.0" layoutY="33.0" promptText="Quantidade" />
-      <TextField fx:id="txtPrecoProduto" layoutX="14.0" layoutY="90.0" promptText="Preço" />
       <Button layoutY="144.0" mnemonicParsing="false" onAction="#addProduto" prefHeight="25.0" prefWidth="149.0" text="Adicionar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Button layoutY="193.0" mnemonicParsing="false" onAction="#consultProduto" prefHeight="25.0" prefWidth="149.0" text="Consultar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Button layoutY="243.0" mnemonicParsing="false" onAction="#attProduto" prefHeight="25.0" prefWidth="149.0" text="Atualizar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Button layoutY="293.0" mnemonicParsing="false" onAction="#excluirProduto" prefHeight="25.0" prefWidth="149.0" text="Excluir" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <TitledPane animated="false" collapsible="false" layoutX="146.0" layoutY="1.0" prefHeight="143.0" prefWidth="202.0" text="Produtos" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="txtNomeProduto" layoutX="14.0" layoutY="26.0" promptText="Nome" />
+                  <TextField fx:id="txtMarcaProduto" layoutX="212.0" layoutY="26.0" promptText="Marca" />
+                  <TextField fx:id="txtTipoProduto" layoutX="389.0" layoutY="26.0" promptText="Tipo" />
+                  <TextField fx:id="txtQuantidadeProduto" layoutX="14.0" layoutY="78.0" promptText="Quantidade" />
+                  <TextField fx:id="txtPrecoProduto" layoutX="212.0" layoutY="78.0" promptText="Preço" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
    </children>
 </AnchorPane>

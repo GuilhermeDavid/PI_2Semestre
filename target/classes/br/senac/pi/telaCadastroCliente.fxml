@@ -20,12 +20,12 @@
                <children>
                   <TextField fx:id="txtNome" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="207.0" promptText="Nome" />
                   <TextField fx:id="txtSobrenome" layoutX="281.0" layoutY="23.0" prefHeight="25.0" prefWidth="380.0" promptText="Sobrenome" />
-                  <TextField fx:id="txtRg" layoutX="480.0" layoutY="69.0" onKeyPressed="#formatarRg" prefHeight="25.0" prefWidth="182.0" promptText="RG" />
+                  <DatePicker fx:id="pickerDataNascimento" layoutX="14.0" layoutY="69.0" prefHeight="25.0" prefWidth="204.0" promptText="Data de nascimento" />
                   <TextField fx:id="txtCpf" layoutX="281.0" layoutY="69.0" onKeyPressed="#formatarCpf" prefHeight="25.0" prefWidth="182.0" promptText="CPF" />
+                  <TextField fx:id="txtRg" layoutX="480.0" layoutY="69.0" onKeyPressed="#formatarRg" prefHeight="25.0" prefWidth="182.0" promptText="RG" />
                   <ComboBox fx:id="comboCivil" layoutX="14.0" layoutY="129.0" onAction="#civilAction" prefHeight="25.0" prefWidth="166.0" promptText="Estado Civil" />
                   <ComboBox fx:id="comboGenero" layoutX="14.0" layoutY="176.0" onAction="#generoAction" prefHeight="25.0" prefWidth="166.0" promptText="Gênero" />
                   <TextField fx:id="txtOutroEC" disable="true" layoutX="271.0" layoutY="129.0" prefHeight="25.0" prefWidth="138.0" promptText="Estado Civil" />
-                  <DatePicker fx:id="pickerDataNascimento" layoutX="14.0" layoutY="69.0" prefHeight="25.0" prefWidth="204.0" promptText="Data de nascimento" />
                   <TextField fx:id="txtOutroGenero" disable="true" layoutX="271.0" layoutY="176.0" prefHeight="25.0" prefWidth="138.0" promptText="Gênero" />
                   <Label layoutX="183.0" layoutY="168.0" text="*" />
                   <Label layoutX="180.0" layoutY="112.0" text="*" />
@@ -38,25 +38,25 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutY="266.0" prefHeight="239.0" prefWidth="723.0" text="Moradia" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TitledPane animated="false" collapsible="false" layoutY="266.0" prefHeight="239.0" prefWidth="723.0" text="Endereço" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="680.0">
                <children>
                   <TextField fx:id="txtCep" layoutX="15.0" layoutY="14.0" prefHeight="25.0" prefWidth="162.0" promptText="CEP" />
+                  <Button layoutX="229.0" layoutY="14.0" mnemonicParsing="false" onAction="#validarCep" prefHeight="25.0" prefWidth="111.0" text="Validar CEP" />
+                  <ComboBox fx:id="comboEstado" layoutX="14.0" layoutY="59.0" prefHeight="25.0" prefWidth="164.0" promptText="Estado" />
+                  <TextField fx:id="txtCidade" layoutX="232.0" layoutY="59.0" prefHeight="25.0" prefWidth="210.0" promptText="Cidade" />
                   <TextField fx:id="txtEndereco" layoutX="17.0" layoutY="112.0" prefHeight="25.0" prefWidth="215.0" promptText="Endereço (Rua, Avenida)" />
                   <TextField fx:id="txtEnderecoNum" layoutX="288.0" layoutY="112.0" prefHeight="25.0" prefWidth="99.0" promptText="Número" />
-                  <TextField fx:id="txtPontoReferencia" layoutX="441.0" layoutY="163.0" prefHeight="25.0" prefWidth="178.0" promptText="Ponto de referência (Opcional)" />
-                  <TextField fx:id="txtComplemento" layoutX="201.0" layoutY="163.0" prefHeight="25.0" prefWidth="214.0" promptText="Complemento (Apto, casa)" />
                   <TextField fx:id="txtBairro" layoutX="17.0" layoutY="163.0" prefHeight="25.0" prefWidth="163.0" promptText="Bairro" />
+                  <TextField fx:id="txtComplemento" layoutX="201.0" layoutY="163.0" prefHeight="25.0" prefWidth="214.0" promptText="Complemento (Apto, casa)" />
+                  <TextField fx:id="txtPontoReferencia" layoutX="441.0" layoutY="163.0" prefHeight="25.0" prefWidth="178.0" promptText="Ponto de referência (Opcional)" />
                   <Label layoutX="180.0" layoutY="18.0" text="*" />
                   <Label layoutX="384.0" layoutY="96.0" text="*" />
                   <Label layoutX="183.0" layoutY="146.0" text="*" />
                   <Label layoutX="229.0" layoutY="96.0" text="*" />
-                  <ComboBox fx:id="comboEstado" layoutX="14.0" layoutY="59.0" prefHeight="25.0" prefWidth="164.0" promptText="Estado" />
-                  <TextField fx:id="txtCidade" layoutX="232.0" layoutY="59.0" prefHeight="25.0" prefWidth="210.0" promptText="Cidade" />
                   <Label layoutX="180.0" layoutY="47.0" prefHeight="17.0" prefWidth="0.0" text="*" />
                   <Label layoutX="438.0" layoutY="38.0" text="*" />
-                  <Button layoutX="229.0" layoutY="14.0" mnemonicParsing="false" onAction="#validarCep" prefHeight="25.0" prefWidth="111.0" text="Validar CEP" />
                </children>
             </AnchorPane>
         </content>
@@ -66,8 +66,8 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="txtTelefoneFixo" layoutX="14.0" layoutY="14.0" promptText="Telefone Fixo" />
-                  <TextField fx:id="txtEmail" layoutX="443.0" layoutY="14.0" prefHeight="25.0" prefWidth="240.0" promptText="Email" />
                   <TextField fx:id="txtCelular" layoutX="226.0" layoutY="14.0" promptText="Celular" />
+                  <TextField fx:id="txtEmail" layoutX="443.0" layoutY="14.0" prefHeight="25.0" prefWidth="240.0" promptText="Email" />
                   <Label layoutX="21.0" layoutY="61.0" prefHeight="17.0" prefWidth="106.0" text="Permite Contato">
                      <font>
                         <Font size="13.0" />
@@ -79,6 +79,9 @@
                      </toggleGroup>
                   </RadioButton>
                   <RadioButton fx:id="radioNaoContato" layoutX="80.0" layoutY="89.0" mnemonicParsing="false" text="Não" toggleGroup="$permiteContato" />
+                  <CheckBox fx:id="cbTelFIxo" layoutX="186.0" layoutY="86.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="97.0" text="Telefone Fixo" />
+                  <CheckBox fx:id="cbCel" layoutX="283.0" layoutY="87.0" mnemonicParsing="false" text="Celular" />
+                  <CheckBox fx:id="cbEmail" layoutX="345.0" layoutY="87.0" mnemonicParsing="false" text="Email" />
                   <Label layoutX="438.0" layoutY="61.0" prefHeight="19.0" prefWidth="252.0" text="Receber promoções e novidades no Email">
                      <font>
                         <Font size="13.0" />
@@ -95,9 +98,6 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="cbTelFIxo" layoutX="186.0" layoutY="86.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="97.0" text="Telefone Fixo" />
-                  <CheckBox fx:id="cbEmail" layoutX="345.0" layoutY="87.0" mnemonicParsing="false" text="Email" />
-                  <CheckBox fx:id="cbCel" layoutX="283.0" layoutY="87.0" mnemonicParsing="false" text="Celular" />
                   <Label layoutX="374.0" layoutY="2.0" text="*" />
                   <Label layoutX="680.0" layoutY="4.0" text="*" />
                   <Label layoutX="111.0" layoutY="52.0" text="*" />
@@ -106,6 +106,6 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <Button layoutX="87.0" layoutY="701.0" mnemonicParsing="false" onAction="#finalizarCadastro" prefHeight="25.0" prefWidth="549.0" text="Finalizar Cadastro" />
+      <Button layoutX="87.0" layoutY="701.0" mnemonicParsing="false" onAction="#finalizarCadastro" prefHeight="25.0" prefWidth="549.0" text="Finalizar Cadastro" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

@@ -21,7 +21,7 @@ public class TelaProdutosController implements Initializable {
     @FXML
     private TableColumn<LinhaTabelaProdutos, String> colunaTipo;
     @FXML
-    private TableColumn<LinhaTabelaProdutos, String> colunaQuantidade;
+    private TableColumn<LinhaTabelaProdutos, Integer> colunaQuantidade;
     @FXML
     private TableColumn<LinhaTabelaProdutos, Double> colunaPreco;
     @FXML
@@ -43,23 +43,32 @@ public class TelaProdutosController implements Initializable {
         colunaQuantidade.setCellValueFactory(new PropertyValueFactory("quantidade"));
         colunaPreco.setCellValueFactory(new PropertyValueFactory("preco"));
         
-        tabelaProdutos.getItems().add(new LinhaTabelaProdutos("RTX 3080","Nvidia","Placa de vídeo", "3", 11324.66));
-        tabelaProdutos.getItems().add(new LinhaTabelaProdutos("I7 9700K","Intel","Processador", "8", 2345.32));
-        tabelaProdutos.getItems().add(new LinhaTabelaProdutos("SSD 500GB","Kingston","Memória", "13", 598.90));
-        
+        tabelaProdutos.getItems().add(new LinhaTabelaProdutos("RTX 3080","Nvidia","Placa de vídeo", 3, 11324.66));
+        tabelaProdutos.getItems().add(new LinhaTabelaProdutos("I7 9700K","Intel","Processador", 8, 2345.32));
+        tabelaProdutos.getItems().add(new LinhaTabelaProdutos("SSD 500GB","Kingston","Armazenamento", 13, 598.90));
+             
     }    
 
     @FXML
     private void addProduto(ActionEvent event) {
         double precoProduto = Double.parseDouble(txtPrecoProduto.getText());
         
+        int quantProduto = Integer.parseInt(txtQuantidadeProduto.getText());
+        
         tabelaProdutos.getItems().add(new LinhaTabelaProdutos(txtNomeProduto.getText(), txtMarcaProduto.getText(), 
-                txtTipoProduto.getText(), txtQuantidadeProduto.getText(), precoProduto));
+                txtTipoProduto.getText(),quantProduto, precoProduto));
+        
+        txtMarcaProduto.clear();
+        txtNomeProduto.clear();
+        txtPrecoProduto.clear();
+        txtQuantidadeProduto.clear();
+        txtTipoProduto.clear();
     }
 
     @FXML
     private void excluirProduto(ActionEvent event) {
         tabelaProdutos.getItems().remove(tabelaProdutos.getSelectionModel().getSelectedItem());
+        
     }
 
     @FXML

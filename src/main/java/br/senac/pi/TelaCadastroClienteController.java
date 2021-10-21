@@ -162,12 +162,12 @@ public class TelaCadastroClienteController implements Initializable {
             txtBairro.setText(webServiceCep.getBairro());
             comboEstado.getSelectionModel().select(webServiceCep.getUf());
              
-        } else {
+       } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             
             alert.setTitle("Erro no CEP");
             alert.setHeaderText("Erro na validação do CEP");
-            alert.setContentText("Por favor, verificar se o CEP foi digitado corretamente, \n Caso o erro persista,"
+            alert.setContentText("Por favor, verificar se o CEP foi digitado corretamente, \nCaso o erro persista,"
                     + " favor digitar o endereço manualmente!");
             alert.showAndWait();
             

@@ -17,19 +17,12 @@ public class TelaConsultaClienteController implements Initializable {
     private TextField txtEmail;
     @FXML
     private TextField txtSobreNome;
-    @FXML
-    private TextField txtRg;
-    @FXML
-    private TextField txtCpf;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
     }    
 
-    @FXML
-    private void voltarTelaPrincipal(ActionEvent event) {
-    }
 
     @FXML
     private void consultarCliente(ActionEvent event) {

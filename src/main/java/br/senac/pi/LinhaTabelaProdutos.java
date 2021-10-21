@@ -1,25 +1,19 @@
 package br.senac.pi;
 
 public class LinhaTabelaProdutos {
+   
     private String nome;
     private String marca;
     private String tipo;
-    private String quantidade;
+    private int quantidade;
     private double preco;
 
- 
-   
-    
-    public LinhaTabelaProdutos(String nome, String marca, String tipo, String quantidade, double preco) {
+    public LinhaTabelaProdutos(String nome, String marca, String tipo, int quantidade, double preco) {
         this.nome = nome;
         this.marca = marca;
         this.tipo = tipo;
         this.quantidade = quantidade;
         this.preco = preco;
-    }
-
-    LinhaTabelaProdutos(String guilherme, String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getNome() {
@@ -46,11 +40,11 @@ public class LinhaTabelaProdutos {
         this.tipo = tipo;
     }
 
-    public String getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(String quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
     
