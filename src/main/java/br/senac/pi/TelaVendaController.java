@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -29,9 +30,15 @@ public class TelaVendaController implements Initializable {
     private TextField txtQnt;
     @FXML
     private TextField txtPrecoTotal;
+    @FXML
+    private ComboBox comboFormaPagamento;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        comboFormaPagamento.getItems().add("Dinheiro");
+        comboFormaPagamento.getItems().add("Debito");
+        comboFormaPagamento.getItems().add("Credito");
+        comboFormaPagamento.getItems().add("Pix");
        
     }    
 
