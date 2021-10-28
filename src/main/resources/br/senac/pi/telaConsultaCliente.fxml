@@ -9,43 +9,27 @@
 
 <AnchorPane id="AnchorPane" prefHeight="840.0" prefWidth="1160.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.pi.TelaConsultaClienteController">
    <children>
-      <TitledPane animated="false" collapsible="false" prefHeight="236.0" prefWidth="723.0" text="Consulta" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TitledPane animated="false" collapsible="false" prefHeight="202.0" prefWidth="1160.0" text="Consulta" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="txtNome" layoutX="20.0" layoutY="42.0" prefHeight="25.0" prefWidth="270.0" promptText="Nome" />
-                  <TextField fx:id="txtEmail" layoutX="20.0" layoutY="105.0" prefHeight="25.0" prefWidth="1110.0" promptText="Email" />
-                  <TextField fx:id="txtSobreNome" layoutX="332.0" layoutY="42.0" prefHeight="25.0" prefWidth="814.0" promptText="Sobrenome" />
+                  <TextField fx:id="txtNome" layoutX="38.6" layoutY="33.0" prefHeight="25.0" prefWidth="436.0" promptText="Nome" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="500.0" />
+                  <TextField fx:id="txtSobreNome" layoutX="38.6" layoutY="76.0" prefHeight="25.0" prefWidth="434.0" promptText="Sobrenome" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="500.0" />
+                  <TextField fx:id="txtEmail" layoutX="39.0" layoutY="114.0" prefHeight="25.0" prefWidth="649.0" promptText="Email" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="500.0" />
                </children>
             </AnchorPane>
         </content>
       </TitledPane>
-      <Button layoutY="260.0" mnemonicParsing="false" onAction="#consultarCliente" prefHeight="25.0" prefWidth="723.0" text="Consultar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Button layoutY="301.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="723.0" text="Excluir" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Button layoutY="343.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="723.0" text="Modificar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <TableView layoutX="247.0" layoutY="393.0" prefHeight="403.0" prefWidth="1160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Button layoutX="381.0" layoutY="218.0" mnemonicParsing="false" onAction="#consultarCliente" prefHeight="25.0" prefWidth="342.0" text="Consultar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
+      <Button layoutX="381.0" layoutY="278.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="342.0" text="Excluir" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
+      <Button layoutX="381.0" layoutY="338.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="342.0" text="Modificar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
+      <TableView fx:id="tabelaCliente" layoutX="247.0" layoutY="393.0" prefHeight="450.0" prefWidth="1160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Nome" />
-            <TableColumn prefWidth="75.0" text="Sobrenome" />
-            <TableColumn prefWidth="75.0" text="CPF" />
-            <TableColumn prefWidth="75.0" text="RG" />
-            <TableColumn prefWidth="75.0" text="Data de Nascimento" />
-            <TableColumn prefWidth="75.0" text="Estado Civil" />
-            <TableColumn prefWidth="75.0" text="Gênero" />
-            <TableColumn prefWidth="75.0" text="CEP" />
-            <TableColumn prefWidth="75.0" text="Estado" />
-            <TableColumn prefWidth="75.0" text="Cidade" />
-            <TableColumn prefWidth="75.0" text="Endereço" />
-            <TableColumn prefWidth="75.0" text="Número" />
-            <TableColumn prefWidth="75.0" text="Bairro" />
-            <TableColumn prefWidth="75.0" text="Complemento" />
-            <TableColumn prefWidth="75.0" text="Ponto de referência" />
-            <TableColumn prefWidth="75.0" text="Telefone Fixo" />
-            <TableColumn prefWidth="75.0" text="Celular" />
-            <TableColumn prefWidth="75.0" text="Email" />
-            <TableColumn prefWidth="75.0" text="Permite Contato" />
-            <TableColumn prefWidth="75.0" text="Preferência de Contato" />
-            <TableColumn prefWidth="75.0" text="Deseja Receber Novidades" />
+          <TableColumn fx:id="colunaNomeCliente" prefWidth="75.0" text="Nome" />
+            <TableColumn fx:id="colunaSobreNomeCliente" prefWidth="75.0" text="Sobrenome" />
+            <TableColumn fx:id="colunaCpfCliente" prefWidth="75.0" text="CPF" />
+            <TableColumn fx:id="colunaRgCliente" prefWidth="75.0" text="RG" />
+            <TableColumn fx:id="colunaEmailCliente" prefWidth="75.0" text="Email" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

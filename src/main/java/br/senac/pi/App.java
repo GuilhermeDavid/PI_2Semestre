@@ -14,7 +14,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("telaPrincipal"), 723, 770);
+        scene = new Scene(loadFXML("telaPrincipal"), 1160, 840);
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("style.css").toString());
       

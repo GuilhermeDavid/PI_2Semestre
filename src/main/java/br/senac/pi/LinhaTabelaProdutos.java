@@ -7,13 +7,15 @@ public class LinhaTabelaProdutos {
     private String tipo;
     private int quantidade;
     private double preco;
+    private String codigo;
 
-    public LinhaTabelaProdutos(String nome, String marca, String tipo, int quantidade, double preco) {
+    public LinhaTabelaProdutos(String nome, String marca, String tipo, int quantidade, double preco, String codigo) {
         this.nome = nome;
         this.marca = marca;
         this.tipo = tipo;
         this.quantidade = quantidade;
         this.preco = preco;
+        this.codigo = codigo;
     }
 
     public String getNome() {
@@ -54,6 +56,14 @@ public class LinhaTabelaProdutos {
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
     
 }
