@@ -22,9 +22,12 @@
                </items></Menu>
             <Menu mnemonicParsing="false" text="Venda">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#AbrirTelaVenda" text="Venda" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirTelaVenda" text="Venda" />
                </items></Menu>
-            <Menu mnemonicParsing="false" text="Relatorio" />
+            <Menu mnemonicParsing="false" text="Relatorio">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#abrirTelaRelatorio" text="Relatorio" />
+               </items></Menu>
             <Menu mnemonicParsing="false" text="Sair">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#sair" text="Sair" />
