@@ -20,7 +20,10 @@
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#abrirTelaProdutos" text="Produtos" />
                </items></Menu>
-            <Menu mnemonicParsing="false" text="Venda" />
+            <Menu mnemonicParsing="false" text="Venda">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#AbrirTelaVenda" text="Venda" />
+               </items></Menu>
             <Menu mnemonicParsing="false" text="Relatorio" />
             <Menu mnemonicParsing="false" text="Sair">
                <items>
