@@ -57,24 +57,6 @@ public class TelaCadastroClienteController implements Initializable {
     private TextField txtEmail;
     @FXML
     private TextField txtCelular;
-    @FXML
-    private RadioButton radioSimContato;
-    @FXML
-    private ToggleGroup permiteContato;
-    @FXML
-    private RadioButton radioNaoContato;
-    @FXML
-    private RadioButton radioSimPromocoes;
-    @FXML
-    private ToggleGroup receberEmail;
-    @FXML
-    private RadioButton radioNaoPromocoes;
-    @FXML
-    private CheckBox cbTelFIxo;
-    @FXML
-    private CheckBox cbEmail;
-    @FXML
-    private CheckBox cbCel;
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -170,39 +152,6 @@ public class TelaCadastroClienteController implements Initializable {
             alert.setContentText("Por favor, verificar se o CEP foi digitado corretamente, \nCaso o erro persista,"
                     + " favor digitar o endereço manualmente!");
             alert.showAndWait();
-            
-        }
-    }
-
-    @FXML
-    private void formatarCpf(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.TAB ) {
-          
-            String bloco1 = txtCpf.getText().substring(0, 3);
-            String bloco2 = txtCpf.getText().substring(3, 6);
-            String bloco3 = txtCpf.getText().substring(6, 9);
-            String bloco4 = txtCpf.getText().substring(9, 11);
-            
-            String cpfFormatado = bloco1 + "." + bloco2+ "." + bloco3+ "-" + bloco4;
-            
-            txtCpf.setText(cpfFormatado);            
-        }   
-    }
-
-    @FXML
-    private void formatarRg(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.TAB ) {
-          
-            
-            String bloco1 = txtRg.getText().substring(0, 2);
-            String bloco2 = txtRg.getText().substring(2, 5);
-            String bloco3 = txtRg.getText().substring(5, 8);
-            String bloco4 = txtRg.getText().substring(8, 9);
-            
-            String rgFormatado = bloco1 + "." + bloco2+ "." + bloco3+ "-" + bloco4;
-            
-            txtRg.setText(rgFormatado);  
-            
         }
     }
 }

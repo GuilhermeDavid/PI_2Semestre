@@ -3,7 +3,6 @@ br\senac\pi\LinhaTabelaProdutos.class
 br\senac\pi\WebServiceCep$Xml$2.class
 br\senac\pi\App.class
 br\senac\pi\TelaRelatorioController.class
-module-info.class
 br\senac\pi\WebServiceCep$Xml$3.class
 br\senac\pi\TelaPrincipalController.class
 br\senac\pi\WebServiceCep$Xml.class

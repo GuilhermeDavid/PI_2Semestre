@@ -27,7 +27,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="txtEmailCliente" layoutX="72.0" layoutY="40.0" prefHeight="25.0" prefWidth="721.0" promptText="Email do Cliente" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="377.0" />
+                  <TextField fx:id="txtCpfCliente" layoutX="72.0" layoutY="40.0" prefHeight="25.0" prefWidth="721.0" promptText="CPF do cliente" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="377.0" />
                   <TextField fx:id="txtCodProduto" layoutX="71.6" layoutY="112.0" prefHeight="25.0" prefWidth="721.0" promptText="Código do Produto" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="377.0" />
                   <TextField fx:id="txtQnt" layoutX="71.6" layoutY="179.0" prefHeight="25.0" prefWidth="721.0" promptText="Quantidade" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="377.0" />
                </children>
@@ -42,6 +42,8 @@
       </Label>
       <Button layoutX="56.0" layoutY="264.0" mnemonicParsing="false" onAction="#excluir" prefHeight="25.0" prefWidth="216.0" text="Excluir" />
       <Button layoutX="844.0" layoutY="264.0" mnemonicParsing="false" onAction="#adicionar" prefHeight="25.0" prefWidth="209.0" text="Adicionar" AnchorPane.rightAnchor="107.0" />
-      <ComboBox fx:id="comboFormaPagamento" layoutY="722.0" prefHeight="25.0" prefWidth="209.0" promptText="Forma de Pagamento " />
+      <ComboBox fx:id="comboFormaPagamento" layoutY="722.0" onAction="#actionComboPagamentos" prefHeight="25.0" prefWidth="209.0" promptText="Forma de Pagamento " />
+      <ComboBox fx:id="comboParcelas" disable="true" layoutX="240.0" layoutY="722.0" prefHeight="25.0" prefWidth="188.0" promptText="Parcelas" />
+      <Button layoutX="509.0" layoutY="722.0" mnemonicParsing="false" onAction="#finalizarCompra" prefHeight="25.0" prefWidth="199.0" text="Finalizar Compra" />
    </children>
 </AnchorPane>

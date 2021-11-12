@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -38,6 +39,8 @@ public class TelaProdutosController implements Initializable {
     private TextField txtPrecoProduto;
     @FXML
     private TableColumn<LinhaTabelaProdutos,String> colunaCodigo;
+    @FXML
+    private Button buttonAddProduto;
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,17 +72,13 @@ public class TelaProdutosController implements Initializable {
         txtQuantidadeProduto.clear();
         txtTipoProduto.clear();
         txtCodProduto.clear();
+        
+        buttonAddProduto.setText("Adicionar");
     }
 
     @FXML
     private void excluirProduto(ActionEvent event) {
         tabelaProdutos.getItems().remove(tabelaProdutos.getSelectionModel().getSelectedItem());
-        
-    }
-
-    @FXML
-    private void attProduto(ActionEvent event) {
-        
         
     }
 
@@ -99,7 +98,9 @@ public class TelaProdutosController implements Initializable {
         txtPrecoProduto.setText(preco);
         txtQuantidadeProduto.setText(quantidade);
         txtTipoProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getTipo());
+        txtCodProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getCodigo());
         
+        buttonAddProduto.setText("Atualizar");
         
     }
 }

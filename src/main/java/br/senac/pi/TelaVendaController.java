@@ -23,8 +23,6 @@ public class TelaVendaController implements Initializable {
     @FXML
     private TableColumn<?, ?> colunaPreco;
     @FXML
-    private TextField txtEmailCliente;
-    @FXML
     private TextField txtCodProduto;
     @FXML
     private TextField txtQnt;
@@ -32,6 +30,10 @@ public class TelaVendaController implements Initializable {
     private TextField txtPrecoTotal;
     @FXML
     private ComboBox comboFormaPagamento;
+    @FXML
+    private ComboBox comboParcelas;
+    @FXML
+    private TextField txtCpfCliente;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -39,6 +41,18 @@ public class TelaVendaController implements Initializable {
         comboFormaPagamento.getItems().add("Debito");
         comboFormaPagamento.getItems().add("Credito");
         comboFormaPagamento.getItems().add("Pix");
+        
+        comboParcelas.getItems().add("1X");
+        comboParcelas.getItems().add("2X");
+        comboParcelas.getItems().add("3X");
+        comboParcelas.getItems().add("4X");
+        comboParcelas.getItems().add("6X");
+        comboParcelas.getItems().add("7X");
+        comboParcelas.getItems().add("8X");
+        comboParcelas.getItems().add("9X");
+        comboParcelas.getItems().add("10X");
+        comboParcelas.getItems().add("11X");
+        comboParcelas.getItems().add("12X");
        
     }    
 
@@ -48,6 +62,24 @@ public class TelaVendaController implements Initializable {
 
     @FXML
     private void adicionar(ActionEvent event) {
+    }
+
+    @FXML
+    private void actionComboPagamentos(ActionEvent event) {
+        int creditoPagamento = comboFormaPagamento.getSelectionModel().getSelectedIndex();
+        
+        if(creditoPagamento == 2){
+            comboParcelas.setDisable(false);
+            
+        }else {
+            comboParcelas.setDisable(true);
+            comboParcelas.getSelectionModel().clearSelection();
+        }
+        
+    }
+
+    @FXML
+    private void finalizarCompra(ActionEvent event) {
     }
     
 }
