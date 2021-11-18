@@ -2,6 +2,7 @@ package br.senac.pi;
 
 public class LinhaTabelaProdutos {
    
+    private int id;
     private String nome;
     private String marca;
     private String tipo;
@@ -9,7 +10,8 @@ public class LinhaTabelaProdutos {
     private double preco;
     private String codigo;
 
-    public LinhaTabelaProdutos(String nome, String marca, String tipo, int quantidade, double preco, String codigo) {
+    public LinhaTabelaProdutos(int id, String nome, String marca, String tipo, int quantidade, double preco, String codigo) {
+        this.id = id;
         this.nome = nome;
         this.marca = marca;
         this.tipo = tipo;
@@ -65,5 +67,14 @@ public class LinhaTabelaProdutos {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     
 }

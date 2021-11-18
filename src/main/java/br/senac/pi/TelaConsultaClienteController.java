@@ -51,7 +51,7 @@ public class TelaConsultaClienteController implements Initializable {
     @FXML
     private void consultarCliente(ActionEvent event) {
         if (!txtNome.getText().isEmpty()) {
-            //tabelaCliente.getItems().removeAll();
+            tabelaCliente.getItems().clear();
             
             String sql = "select * from cliente where nome_cliente = ? ";
             

@@ -11,6 +11,7 @@
    <children>
       <TableView fx:id="tabelaProdutos" layoutY="345.0" prefHeight="393.0" prefWidth="1160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <columns>
+            <TableColumn fx:id="colunaId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="colunaNome" prefWidth="75.0" text="Nome" />
           <TableColumn fx:id="colunaMarca" prefWidth="75.0" text="Marca" />
             <TableColumn fx:id="colunaTipo" prefWidth="75.0" text="Tipo" />

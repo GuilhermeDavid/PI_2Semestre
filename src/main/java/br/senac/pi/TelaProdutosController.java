@@ -1,6 +1,8 @@
 package br.senac.pi;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -41,9 +43,15 @@ public class TelaProdutosController implements Initializable {
     private TableColumn<LinhaTabelaProdutos,String> colunaCodigo;
     @FXML
     private Button buttonAddProduto;
+    @FXML
+    private TableColumn<LinhaTabelaProdutos, Integer> colunaId;
+    
+    private boolean estaEditando = false;
+    private Integer idEdicao = null;
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        colunaId.setCellValueFactory(new PropertyValueFactory("id"));
         colunaNome.setCellValueFactory(new PropertyValueFactory("nome"));
         colunaMarca.setCellValueFactory(new PropertyValueFactory("marca"));
         colunaTipo.setCellValueFactory(new PropertyValueFactory("tipo"));
@@ -51,56 +59,156 @@ public class TelaProdutosController implements Initializable {
         colunaPreco.setCellValueFactory(new PropertyValueFactory("preco"));
         colunaCodigo.setCellValueFactory(new PropertyValueFactory("codigo"));
         
-        tabelaProdutos.getItems().add(new LinhaTabelaProdutos("RTX 3080","Nvidia","Placa de vídeo", 3, 11324.66,"443"));
-        tabelaProdutos.getItems().add(new LinhaTabelaProdutos("I7 9700K","Intel","Processador", 8, 2345.32,"321"));
-        tabelaProdutos.getItems().add(new LinhaTabelaProdutos("SSD 500GB","Kingston","Armazenamento", 13, 598.90, "123"));
-             
+        listarProdutos();
+        
     }    
 
     @FXML
     private void addProduto(ActionEvent event) {
+     
         double precoProduto = Double.parseDouble(txtPrecoProduto.getText());
         
         int quantProduto = Integer.parseInt(txtQuantidadeProduto.getText());
         
-        tabelaProdutos.getItems().add(new LinhaTabelaProdutos(txtNomeProduto.getText(), txtMarcaProduto.getText(), 
-                txtTipoProduto.getText(),quantProduto, precoProduto,txtCodProduto.getText()));
+        if (!estaEditando) {
+            String sql = "insert into produto (cod_produto, nome_produto, marca, "
+                    + "tipo, quantidade, preco)"
+                    + "values(?, ?, ?, ?, ? , ?)";
+
+            try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+
+                ps.setString(1, txtCodProduto.getText());
+                ps.setString(2, txtNomeProduto.getText());
+                ps.setString(3, txtMarcaProduto.getText());
+                ps.setString(4, txtTipoProduto.getText());
+                ps.setInt(5, quantProduto);
+                ps.setDouble(6, precoProduto);
+
+                ps.execute();
+
+                limpar();
+
+                listarProdutos();
+
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            String sql = "update produto set cod_produto = ?, nome_produto = ?, marca = ?, "
+                    + "tipo = ?, quantidade = ?, preco = ? where id_produto = ?";
+            
+            try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+                ps.setString(1, txtCodProduto.getText());
+                ps.setString(2, txtNomeProduto.getText());
+                ps.setString(3, txtMarcaProduto.getText());
+                ps.setString(4, txtTipoProduto.getText());
+                ps.setInt(5, quantProduto);
+                ps.setDouble(6, precoProduto);
+                ps.setInt(7, idEdicao);
+                
+                ps.execute();
+                
+                limpar(); 
+                estaEditando = false;
+                idEdicao = null;
+               
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        }
+
+        buttonAddProduto.setText("Adicionar");
+    }
+
+    @FXML
+    private void excluirProduto(ActionEvent event) {
+       LinhaTabelaProdutos linha = tabelaProdutos.getSelectionModel().getSelectedItem();        
         
+        if (linha != null) {
+            int id = linha.getId();
+            
+            String sql = "delete from produto where id_produto = ?";
+            
+            try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+                ps.setInt(1, id);
+                
+                ps.execute();
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    private void consultProduto(ActionEvent event) {
+        listarProdutos();
+        
+    }
+
+    @FXML
+    private void editarProduto(ActionEvent event) {
+        LinhaTabelaProdutos linha = tabelaProdutos.getSelectionModel().getSelectedItem();
+        
+        if (linha != null) {
+            int id = linha.getId();
+            idEdicao = id; 
+            
+            String quantidade = Integer.toString(tabelaProdutos.getSelectionModel().getSelectedItem().getQuantidade());
+
+            String preco = Double.toString(tabelaProdutos.getSelectionModel().getSelectedItem().getPreco());
+
+            txtNomeProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getNome());
+            txtMarcaProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getMarca());
+            txtPrecoProduto.setText(preco);
+            txtQuantidadeProduto.setText(quantidade);
+            txtTipoProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getTipo());
+            txtCodProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getCodigo());
+
+            estaEditando = true;
+
+            buttonAddProduto.setText("Atualizar");
+        }
+        
+    }
+    
+    private void listarProdutos(){
+        tabelaProdutos.getItems().clear();
+        String sql = "select * from produto";
+        
+        try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {                
+                int id = rs.getInt("id_produto");
+                String cod = rs.getString("cod_produto");
+                String nome = rs.getString("nome_produto");
+                String marca = rs.getString("marca");
+                String tipo = rs.getString("tipo");
+                int quant = rs.getInt("quantidade");
+                double preco = rs.getDouble("preco");
+                
+                LinhaTabelaProdutos linha = new LinhaTabelaProdutos(id, nome, marca, tipo, quant, preco, cod);
+                
+                tabelaProdutos.getItems().add(linha);
+                
+            }
+            
+            
+        } catch (Exception e) {
+        }
+        
+    }
+    
+    private void limpar (){
         txtMarcaProduto.clear();
         txtNomeProduto.clear();
         txtPrecoProduto.clear();
         txtQuantidadeProduto.clear();
         txtTipoProduto.clear();
         txtCodProduto.clear();
-        
-        buttonAddProduto.setText("Adicionar");
-    }
-
-    @FXML
-    private void excluirProduto(ActionEvent event) {
-        tabelaProdutos.getItems().remove(tabelaProdutos.getSelectionModel().getSelectedItem());
-        
-    }
-
-    @FXML
-    private void consultProduto(ActionEvent event) {
-        
-    }
-
-    @FXML
-    private void editarProduto(ActionEvent event) {
-        String quantidade = Integer.toString(tabelaProdutos.getSelectionModel().getSelectedItem().getQuantidade());
-        
-        String preco = Double.toString(tabelaProdutos.getSelectionModel().getSelectedItem().getPreco());
-                
-        txtNomeProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getNome());
-        txtMarcaProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getMarca());
-        txtPrecoProduto.setText(preco);
-        txtQuantidadeProduto.setText(quantidade);
-        txtTipoProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getTipo());
-        txtCodProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getCodigo());
-        
-        buttonAddProduto.setText("Atualizar");
-        
+     
     }
 }
