@@ -1,13 +1,15 @@
 package br.senac.pi;
 
 public class LinhaTabelaCliente {
+    private int id;
     private String nome;
     private String sobreNome;
     private String cpf;
     private String rg;
     private String email;
 
-    public LinhaTabelaCliente(String nome, String sobreNome, String cpf, String rg, String email) {
+    public LinhaTabelaCliente(int id, String nome, String sobreNome, String cpf, String rg, String email) {
+        this.id = id;
         this.nome = nome;
         this.sobreNome = sobreNome;
         this.cpf = cpf;
@@ -54,6 +56,13 @@ public class LinhaTabelaCliente {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 }

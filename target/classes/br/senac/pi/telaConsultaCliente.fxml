@@ -13,18 +13,19 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="txtNome" layoutX="38.6" layoutY="33.0" prefHeight="25.0" prefWidth="436.0" promptText="Nome" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="500.0" />
-                  <TextField fx:id="txtSobreNome" layoutX="38.6" layoutY="76.0" prefHeight="25.0" prefWidth="434.0" promptText="Sobrenome" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="500.0" />
-                  <TextField fx:id="txtEmail" layoutX="39.0" layoutY="114.0" prefHeight="25.0" prefWidth="649.0" promptText="Email" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="500.0" />
+                  <TextField fx:id="txtNome" layoutX="30.0" layoutY="26.0" prefHeight="25.0" prefWidth="436.0" promptText="Nome" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="600.0" />
+                  <TextField fx:id="txtCpf" layoutX="31.0" layoutY="76.0" prefHeight="25.0" prefWidth="434.0" promptText="CPF" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="600.0" />
+                  <TextField fx:id="txtEmail" layoutX="31.0" layoutY="126.0" prefHeight="25.0" prefWidth="435.0" promptText="Email" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="600.0" />
                </children>
             </AnchorPane>
         </content>
       </TitledPane>
       <Button layoutX="381.0" layoutY="218.0" mnemonicParsing="false" onAction="#consultarCliente" prefHeight="25.0" prefWidth="342.0" text="Consultar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
-      <Button layoutX="381.0" layoutY="278.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="342.0" text="Excluir" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
-      <Button layoutX="381.0" layoutY="338.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="342.0" text="Modificar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
+      <Button layoutX="381.0" layoutY="278.0" mnemonicParsing="false" onAction="#excluirCliente" prefHeight="25.0" prefWidth="342.0" text="Excluir" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
+      <Button layoutX="381.0" layoutY="338.0" mnemonicParsing="false" onAction="#modificarCliente" prefHeight="25.0" prefWidth="342.0" text="Modificar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
       <TableView fx:id="tabelaCliente" layoutX="247.0" layoutY="393.0" prefHeight="450.0" prefWidth="1160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <columns>
+            <TableColumn fx:id="colunaIdCliente" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="colunaNomeCliente" prefWidth="75.0" text="Nome" />
             <TableColumn fx:id="colunaSobreNomeCliente" prefWidth="75.0" text="Sobrenome" />
             <TableColumn fx:id="colunaCpfCliente" prefWidth="75.0" text="CPF" />

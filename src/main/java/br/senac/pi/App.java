@@ -24,6 +24,16 @@ public class App extends Application {
     static void setRoot(String fxml, BorderPane container) throws IOException {
         container.setCenter(loadFXML(fxml));
     }
+    
+    static void abrirTelaEdicaoCliente(int id) throws IOException{
+        TelaCadastroClienteController.idEdição = id;
+        BorderPane container = (BorderPane) scene.lookup("#container");
+        container.setCenter(loadFXML("telaCadastroCliente"));
+    }
+    static void abrirTelaListagemCliente() throws IOException{
+        BorderPane container = (BorderPane) scene.lookup("#container");
+        container.setCenter(loadFXML("telaConsultaCliente"));
+    }
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
