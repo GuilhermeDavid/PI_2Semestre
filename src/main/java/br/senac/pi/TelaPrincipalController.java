@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 
 public class TelaPrincipalController implements Initializable {
@@ -16,8 +15,7 @@ public class TelaPrincipalController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
+
     }    
 
     @FXML
@@ -33,7 +31,7 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private void sair(ActionEvent event) {
         System.exit(0);
-        
+    
     }
 
     @FXML

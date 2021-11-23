@@ -14,10 +14,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("telaPrincipal"), 1160, 840);
+        int w = 1100;
+        int h = 900;
+        
+        scene = new Scene(loadFXML("telaPrincipal"), w, h);
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("style.css").toString());
-      
+        stage.setMinWidth(w);
+        stage.setMinHeight(h + 20);
         stage.show();
     }
 

@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="840.0" prefWidth="1160.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.pi.TelaRelatorioController">
    <children>
-      <TableView fx:id="tabelaRelatorio" layoutY="256.0" prefHeight="414.0" prefWidth="1160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TableView fx:id="tabelaRelatorio" layoutY="313.0" prefHeight="414.0" prefWidth="1160.0" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="313.0">
         <columns>
           <TableColumn fx:id="colunaCliente" prefWidth="75.0" text="Cliente" />
           <TableColumn fx:id="colunaProduto" prefWidth="75.0" text="Produtos" />
@@ -29,7 +29,7 @@
                <children>
                   <DatePicker fx:id="dataInicio" layoutX="76.0" layoutY="103.0" prefHeight="25.0" prefWidth="375.0" />
                   <DatePicker fx:id="dataFinal" layoutX="619.0" layoutY="103.0" prefHeight="25.0" prefWidth="375.0" AnchorPane.rightAnchor="164.0" />
-                  <Label layoutX="178.0" layoutY="47.0" text="Data nício">
+                  <Label layoutX="178.0" layoutY="47.0" text="Data Início">
                      <font>
                         <Font size="28.0" />
                      </font>
@@ -39,16 +39,16 @@
                         <Font size="28.0" />
                      </font>
                   </Label>
-                  <Button layoutX="352.0" layoutY="168.0" mnemonicParsing="false" onAction="#validar" prefHeight="25.0" prefWidth="441.0" text="Validar" AnchorPane.leftAnchor="352.0000000000001" AnchorPane.rightAnchor="355.4" />
                </children>
             </AnchorPane>
         </content>
       </TitledPane>
-      <TextField layoutX="895.0" layoutY="757.0" prefHeight="25.0" prefWidth="251.0" AnchorPane.rightAnchor="0.0" />
-      <Label layoutX="911.0" layoutY="700.0" prefHeight="32.0" prefWidth="230.0" text="Total Arrecadado " AnchorPane.rightAnchor="19.0">
+      <TextField layoutX="909.0" layoutY="784.0" prefHeight="25.0" prefWidth="251.0" AnchorPane.bottomAnchor="31.0" AnchorPane.rightAnchor="0.0" />
+      <Label layoutX="911.0" layoutY="727.0" prefHeight="32.0" prefWidth="230.0" text="Total Arrecadado " AnchorPane.bottomAnchor="73.0" AnchorPane.rightAnchor="19.0">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
+      <Button layoutX="911.0" layoutY="273.0" mnemonicParsing="false" onAction="#validar" prefHeight="25.0" prefWidth="204.0" text="Validar" AnchorPane.rightAnchor="45.0" />
    </children>
 </AnchorPane>

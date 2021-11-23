@@ -48,6 +48,8 @@ public class TelaProdutosController implements Initializable {
     
     private boolean estaEditando = false;
     private Integer idEdicao = null;
+    @FXML
+    private Button buttonCancelarEdicao;
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -66,7 +68,7 @@ public class TelaProdutosController implements Initializable {
     @FXML
     private void addProduto(ActionEvent event) {
      
-        double precoProduto = Double.parseDouble(txtPrecoProduto.getText());
+        float precoProduto = Float.parseFloat(txtPrecoProduto.getText());
         
         int quantProduto = Integer.parseInt(txtQuantidadeProduto.getText());
         
@@ -82,7 +84,7 @@ public class TelaProdutosController implements Initializable {
                 ps.setString(3, txtMarcaProduto.getText());
                 ps.setString(4, txtTipoProduto.getText());
                 ps.setInt(5, quantProduto);
-                ps.setDouble(6, precoProduto);
+                ps.setFloat(6, precoProduto);
 
                 ps.execute();
 
@@ -111,6 +113,7 @@ public class TelaProdutosController implements Initializable {
                 limpar(); 
                 estaEditando = false;
                 idEdicao = null;
+                listarProdutos();
                
                 
             } catch (Exception e) {
@@ -136,6 +139,8 @@ public class TelaProdutosController implements Initializable {
                 
                 ps.execute();
                 
+                listarProdutos();
+                
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -144,8 +149,63 @@ public class TelaProdutosController implements Initializable {
 
     @FXML
     private void consultProduto(ActionEvent event) {
-        listarProdutos();
-        
+        if (!txtNomeProduto.getText().isEmpty()) {
+            tabelaProdutos.getItems().clear();
+            
+            String sql = "select * from produto where nome_produto = ?";
+            
+            try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+                
+                ps.setString(1, txtNomeProduto.getText());
+                ResultSet rs = ps.executeQuery();
+                
+                while (rs.next()) {                
+                int id = rs.getInt("id_produto");
+                String cod = rs.getString("cod_produto");
+                String nome = rs.getString("nome_produto");
+                String marca = rs.getString("marca");
+                String tipo = rs.getString("tipo");
+                int quant = rs.getInt("quantidade");
+                float preco = rs.getFloat("preco");
+                
+                LinhaTabelaProdutos linha = new LinhaTabelaProdutos(id, nome, marca, tipo, quant, preco, cod);
+                
+                tabelaProdutos.getItems().add(linha);     
+            }        
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (!txtCodProduto.getText().isEmpty()) {
+            tabelaProdutos.getItems().clear();
+            
+            String sql = "select * from produto where cod_produto = ?";
+            
+            try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+                
+                ps.setString(1, txtCodProduto.getText());
+                ResultSet rs = ps.executeQuery();
+                
+                while (rs.next()) {                
+                int id = rs.getInt("id_produto");
+                String cod = rs.getString("cod_produto");
+                String nome = rs.getString("nome_produto");
+                String marca = rs.getString("marca");
+                String tipo = rs.getString("tipo");
+                int quant = rs.getInt("quantidade");
+                float preco = rs.getFloat("preco");
+                
+                LinhaTabelaProdutos linha = new LinhaTabelaProdutos(id, nome, marca, tipo, quant, preco, cod);
+                
+                tabelaProdutos.getItems().add(linha);     
+            }        
+            } catch (Exception e) {
+                e.printStackTrace();
+            }   
+        }
+        if (txtCodProduto.getText().isEmpty() && txtNomeProduto.getText().isEmpty()) {
+            listarProdutos();
+        }
     }
 
     @FXML
@@ -170,6 +230,8 @@ public class TelaProdutosController implements Initializable {
             estaEditando = true;
 
             buttonAddProduto.setText("Atualizar");
+            
+            buttonCancelarEdicao.setVisible(true);
         }
         
     }
@@ -188,7 +250,7 @@ public class TelaProdutosController implements Initializable {
                 String marca = rs.getString("marca");
                 String tipo = rs.getString("tipo");
                 int quant = rs.getInt("quantidade");
-                double preco = rs.getDouble("preco");
+                float preco = rs.getFloat("preco");
                 
                 LinhaTabelaProdutos linha = new LinhaTabelaProdutos(id, nome, marca, tipo, quant, preco, cod);
                 
@@ -198,6 +260,7 @@ public class TelaProdutosController implements Initializable {
             
             
         } catch (Exception e) {
+            e.printStackTrace();
         }
         
     }
@@ -210,5 +273,14 @@ public class TelaProdutosController implements Initializable {
         txtTipoProduto.clear();
         txtCodProduto.clear();
      
+    }
+
+    @FXML
+    private void cancelarEdicao(ActionEvent event) {
+        estaEditando = false;
+        buttonCancelarEdicao.setVisible(false);
+        limpar();
+        buttonAddProduto.setText("Adicionar");
+        listarProdutos();
     }
 }

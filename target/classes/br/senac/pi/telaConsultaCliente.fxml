@@ -20,10 +20,10 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <Button layoutX="381.0" layoutY="218.0" mnemonicParsing="false" onAction="#consultarCliente" prefHeight="25.0" prefWidth="342.0" text="Consultar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
-      <Button layoutX="381.0" layoutY="278.0" mnemonicParsing="false" onAction="#excluirCliente" prefHeight="25.0" prefWidth="342.0" text="Excluir" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
-      <Button layoutX="381.0" layoutY="338.0" mnemonicParsing="false" onAction="#modificarCliente" prefHeight="25.0" prefWidth="342.0" text="Modificar" AnchorPane.leftAnchor="381.0" AnchorPane.rightAnchor="437.0" />
-      <TableView fx:id="tabelaCliente" layoutX="247.0" layoutY="393.0" prefHeight="450.0" prefWidth="1160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Button layoutX="719.0" layoutY="243.0" mnemonicParsing="false" onAction="#consultarCliente" prefHeight="25.0" prefWidth="194.0" text="Consultar" AnchorPane.rightAnchor="247.0" />
+      <Button layoutX="27.0" layoutY="243.0" mnemonicParsing="false" onAction="#excluirCliente" prefHeight="25.0" prefWidth="194.0" text="Excluir" />
+      <Button layoutX="952.0" layoutY="243.0" mnemonicParsing="false" onAction="#modificarCliente" prefHeight="25.0" prefWidth="194.0" text="Modificar" AnchorPane.rightAnchor="14.0" />
+      <TableView fx:id="tabelaCliente" layoutX="247.0" layoutY="393.0" prefHeight="531.0" prefWidth="1160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="309.0">
         <columns>
             <TableColumn fx:id="colunaIdCliente" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="colunaNomeCliente" prefWidth="75.0" text="Nome" />

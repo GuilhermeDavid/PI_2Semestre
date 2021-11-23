@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -12,9 +13,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="840.0" prefWidth="1160.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.pi.TelaVendaController">
    <children>
-      <TableView fx:id="tabelaVenda" layoutY="305.0" prefHeight="363.0" prefWidth="1160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TableView fx:id="tabelaVenda" layoutY="305.0" prefHeight="363.0" prefWidth="1160.0" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="305.0">
         <columns>
-          <TableColumn fx:id="colunaCliente" prefWidth="75.0" text="Cliente" />
+          <TableColumn fx:id="colunaId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="colunaProduto" text="Produto" />
             <TableColumn fx:id="colunaQtd" prefWidth="75.0" text="Quantidade" />
             <TableColumn fx:id="colunaPreco" prefWidth="75.0" text="Preço" />
@@ -30,20 +31,28 @@
                   <TextField fx:id="txtCpfCliente" layoutX="72.0" layoutY="40.0" prefHeight="25.0" prefWidth="721.0" promptText="CPF do cliente" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="377.0" />
                   <TextField fx:id="txtCodProduto" layoutX="71.6" layoutY="112.0" prefHeight="25.0" prefWidth="721.0" promptText="Código do Produto" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="377.0" />
                   <TextField fx:id="txtQnt" layoutX="71.6" layoutY="179.0" prefHeight="25.0" prefWidth="721.0" promptText="Quantidade" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="377.0" />
+                  <Button layoutX="841.0" layoutY="40.0" mnemonicParsing="false" onAction="#validarCliente" prefHeight="25.0" prefWidth="209.0" text="Validar cliente" AnchorPane.rightAnchor="108.0" />
                </children>
             </AnchorPane>
         </content>
       </TitledPane>
-      <TextField fx:id="txtPrecoTotal" editable="false" layoutX="844.0" layoutY="722.0" prefHeight="25.0" prefWidth="308.0" AnchorPane.rightAnchor="8.0" />
-      <Label layoutX="941.0" layoutY="694.0" prefHeight="17.0" prefWidth="145.0" text="Valor Total" AnchorPane.rightAnchor="74.0">
+      <TextField fx:id="txtPrecoTotal" editable="false" layoutX="844.0" layoutY="722.0" prefHeight="25.0" prefWidth="308.0" AnchorPane.bottomAnchor="93.0" AnchorPane.rightAnchor="8.0" />
+      <Label layoutX="941.0" layoutY="694.0" prefHeight="17.0" prefWidth="145.0" text="Valor Total" AnchorPane.bottomAnchor="118.0" AnchorPane.rightAnchor="74.0">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Button layoutX="56.0" layoutY="264.0" mnemonicParsing="false" onAction="#excluir" prefHeight="25.0" prefWidth="216.0" text="Excluir" />
-      <Button layoutX="844.0" layoutY="264.0" mnemonicParsing="false" onAction="#adicionar" prefHeight="25.0" prefWidth="209.0" text="Adicionar" AnchorPane.rightAnchor="107.0" />
-      <ComboBox fx:id="comboFormaPagamento" layoutY="722.0" onAction="#actionComboPagamentos" prefHeight="25.0" prefWidth="209.0" promptText="Forma de Pagamento " />
-      <ComboBox fx:id="comboParcelas" disable="true" layoutX="240.0" layoutY="722.0" prefHeight="25.0" prefWidth="188.0" promptText="Parcelas" />
-      <Button layoutX="509.0" layoutY="722.0" mnemonicParsing="false" onAction="#finalizarCompra" prefHeight="25.0" prefWidth="199.0" text="Finalizar Compra" />
+      <Button layoutX="643.0" layoutY="264.0" mnemonicParsing="false" onAction="#excluir" prefHeight="25.0" prefWidth="209.0" text="Excluir" AnchorPane.rightAnchor="308.0" />
+      <Button layoutX="894.0" layoutY="264.0" mnemonicParsing="false" onAction="#adicionar" prefHeight="25.0" prefWidth="209.0" text="Adicionar" AnchorPane.rightAnchor="57.0" />
+      <ComboBox fx:id="comboFormaPagamento" layoutY="722.0" onAction="#actionComboPagamentos" prefHeight="25.0" prefWidth="209.0" promptText="Forma de Pagamento " AnchorPane.bottomAnchor="93.0" />
+      <ComboBox fx:id="comboParcelas" disable="true" layoutX="240.0" layoutY="722.0" prefHeight="25.0" prefWidth="188.0" promptText="Parcelas" AnchorPane.bottomAnchor="93.0" />
+      <Button layoutX="995.0" layoutY="783.0" mnemonicParsing="false" onAction="#finalizarCompra" prefHeight="25.0" prefWidth="145.0" text="Finalizar Compra" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="12.0" />
+      <Label fx:id="labelCliente" layoutX="14.0" layoutY="263.0" prefHeight="27.0" prefWidth="252.0" text="Cliente: ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="837.0" layoutY="783.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="134.0" text="Cancelar" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="170.0" />
+      <DatePicker fx:id="pickerDataVenda" layoutY="771.0" prefHeight="25.0" prefWidth="209.0" promptText="Data da venda" AnchorPane.bottomAnchor="44.0" />
    </children>
 </AnchorPane>

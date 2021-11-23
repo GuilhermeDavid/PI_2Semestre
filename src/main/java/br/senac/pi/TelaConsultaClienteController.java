@@ -80,6 +80,7 @@ public class TelaConsultaClienteController implements Initializable {
             }
         }
         if (!txtCpf.getText().isEmpty()) {
+            tabelaCliente.getItems().clear();
             String sql = "select * from cliente where cpf = ? ";
             
             try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
@@ -105,6 +106,7 @@ public class TelaConsultaClienteController implements Initializable {
             }
         }
         if (!txtEmail.getText().isEmpty()) {
+            tabelaCliente.getItems().clear();
             String sql = "select * from cliente where email = ? ";
             
             try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
@@ -130,7 +132,15 @@ public class TelaConsultaClienteController implements Initializable {
                 e.printStackTrace();
             }
         }
+        if (txtEmail.getText().isEmpty() && txtCpf.getText().isEmpty() 
+                && txtNome.getText().isEmpty()){
+            
+            tabelaCliente.getItems().clear();
+
+            listar();
+        }
         
+        limpar();
     }
 
     @FXML
@@ -147,6 +157,8 @@ public class TelaConsultaClienteController implements Initializable {
                 
                 ps.execute();
                 
+                listar();
+                
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -159,6 +171,8 @@ public class TelaConsultaClienteController implements Initializable {
         if (linha != null) {
             int id = linha.getId();
             App.abrirTelaEdicaoCliente(id);
+            
+            listar();
         }
     }
 
@@ -187,5 +201,12 @@ public class TelaConsultaClienteController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }   
+    }
+    
+    private void limpar(){
+        txtCpf.clear();
+        txtNome.clear();
+        txtEmail.clear();
+        
     }
 }
