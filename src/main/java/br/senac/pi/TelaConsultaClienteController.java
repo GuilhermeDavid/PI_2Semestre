@@ -54,10 +54,10 @@ public class TelaConsultaClienteController implements Initializable {
         if (!txtNome.getText().isEmpty()) {
             tabelaCliente.getItems().clear();
             
-            String sql = "select * from cliente where nome_cliente = ? ";
+            String sql = "select * from cliente where nome_cliente like ? ";
             
             try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
-            ps.setString(1, txtNome.getText());
+            ps.setString(1, "%" + txtNome.getText() + "%");
                 
             ResultSet rs = ps.executeQuery();
             
@@ -82,10 +82,10 @@ public class TelaConsultaClienteController implements Initializable {
         }
         if (!txtCpf.getText().isEmpty()) {
             tabelaCliente.getItems().clear();
-            String sql = "select * from cliente where cpf = ? ";
+            String sql = "select * from cliente where cpf like ? ";
             
             try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
-            ps.setString(1, txtCpf.getText());
+            ps.setString(1, "%" + txtCpf.getText() + "%");
                 
             ResultSet rs = ps.executeQuery();
             
@@ -108,10 +108,10 @@ public class TelaConsultaClienteController implements Initializable {
         }
         if (!txtEmail.getText().isEmpty()) {
             tabelaCliente.getItems().clear();
-            String sql = "select * from cliente where email = ? ";
+            String sql = "select * from cliente where email like ? ";
             
             try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
-            ps.setString(1, txtEmail.getText());
+            ps.setString(1, "%" + txtEmail.getText()+ "%");
                 
             ResultSet rs = ps.executeQuery();
             
