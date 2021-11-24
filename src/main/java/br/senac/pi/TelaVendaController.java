@@ -121,6 +121,7 @@ public class TelaVendaController implements Initializable {
             String sql = "select top 1 * from produto where cod_produto = ?";
         
         try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+            
             ps.setInt(1, Integer.parseInt(txtCodProduto.getText()));
             
             ResultSet rs = ps.executeQuery();
@@ -128,27 +129,33 @@ public class TelaVendaController implements Initializable {
             if (rs.next()) {
                 qntProduto = Integer.parseInt(txtQnt.getText());
                 precoProduto = rs.getFloat("preco") * qntProduto;
+                int estoque = rs.getInt("quantidade");
                 
-                
-                    LinhaTabelaVenda ltv = new LinhaTabelaVenda(rs.getInt("id_produto"), 
-                    rs.getString("nome_produto"), 
-                    Integer.parseInt(txtQnt.getText()), 
-                    precoProduto);
+                if (qntProduto > estoque) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Não há produtos suficentes para efetuar esse compra\nO estoque desse produto é de " +  rs.getInt("quantidade")
+                    + "\nE o cliente deseja " + qntProduto);
+                    alert.showAndWait();              
+                }else{              
+                        LinhaTabelaVenda ltv = new LinhaTabelaVenda(rs.getInt("id_produto"), 
+                        rs.getString("nome_produto"), 
+                        Integer.parseInt(txtQnt.getText()), 
+                        precoProduto);
 
 
-                    tabelaVenda.getItems().add(ltv);
+                        tabelaVenda.getItems().add(ltv);
 
-                    precoTotal += precoProduto;
+                        precoTotal += precoProduto;
 
-                    txtPrecoTotal.setText(Float.toString(precoTotal));
+                        txtPrecoTotal.setText(Float.toString(precoTotal));
 
-                    limpar();                   
+                        limpar();                   
+                }
             }    
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        }
-    
     }
 
     @FXML
@@ -274,6 +281,7 @@ public class TelaVendaController implements Initializable {
         tabelaVenda.getItems().clear();     
         comboFormaPagamento.setValue(null);
         comboParcelas.setValue(null);
+        pickerDataVenda.setValue(null);
        
     }
     

@@ -112,6 +112,7 @@ public class TelaRelatorioController implements Initializable {
             tabelaRelatorio.getItems().clear();
             dataFinal.setValue(null);
             dataInicio.setValue(null);
+            txtTotal.clear();
         
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
