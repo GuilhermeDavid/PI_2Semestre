@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -127,22 +128,29 @@ public class TelaProdutosController implements Initializable {
 
     @FXML
     private void excluirProduto(ActionEvent event) {
-       LinhaTabelaProdutos linha = tabelaProdutos.getSelectionModel().getSelectedItem();        
-        
-        if (linha != null) {
-            int id = linha.getId();
+        if (App.perguntar("Exclusão", "Deseja mesmo excluir?", "A escolha não pode ser desfeita!")) {
             
-            String sql = "delete from produto where id_produto = ?";
-            
-            try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
-                ps.setInt(1, id);
-                
-                ps.execute();
-                
-                listarProdutos();
-                
-            } catch (Exception e) {
-                e.printStackTrace();
+            LinhaTabelaProdutos linha = tabelaProdutos.getSelectionModel().getSelectedItem();        
+
+            if (linha != null) {
+                int id = linha.getId();
+
+                String sql = "delete from produto where id_produto = ?";
+
+                try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+                    ps.setInt(1, id);
+
+                    ps.execute();
+
+                    listarProdutos();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Nenhum produto selecionado");
+                alert.showAndWait();
             }
         }
     }

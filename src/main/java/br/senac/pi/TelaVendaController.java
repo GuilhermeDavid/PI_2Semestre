@@ -82,8 +82,13 @@ public class TelaVendaController implements Initializable {
 
     @FXML
     private void excluir(ActionEvent event) {
-        if (tabelaVenda.getSelectionModel().getSelectedItem() == null) {
+        if (App.perguntar("Exclusão", "Deseja mesmo excluir?", "A escolha não pode ser desfeita!")) {
             
+        if (tabelaVenda.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Nenhum produto selecionado");
+            alert.showAndWait();
+     
         } else {
             LinhaTabelaVenda ltv = tabelaVenda.getSelectionModel().getSelectedItem();
             
@@ -98,6 +103,7 @@ public class TelaVendaController implements Initializable {
             } else {
                 txtPrecoTotal.setText(Float.toString(precoTotal));
             }   
+        }
         }
     }
 

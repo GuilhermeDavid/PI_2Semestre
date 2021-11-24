@@ -6,6 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 
 public class App extends Application {
@@ -43,7 +46,28 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
-
+    
+    public static boolean perguntar(String titulo, String cabecalho, String msg){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        
+        alert.setTitle(titulo);
+        alert.setHeaderText(cabecalho);
+        alert.setContentText(msg);
+    
+        ButtonType buttonSim = new ButtonType("Sim");
+        ButtonType buttonNao = new ButtonType("Não");
+        
+        alert.getButtonTypes().setAll(buttonSim,buttonNao);
+        
+        Optional<ButtonType> result = alert.showAndWait();
+        
+        if (result.get() == buttonSim) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public static void main(String[] args) {
         launch();
     }
