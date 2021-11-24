@@ -198,121 +198,158 @@ public class TelaCadastroClienteController implements Initializable {
     @FXML
     private void finalizarCadastro(ActionEvent event) throws IOException {
         if (!estaEditando) {
-            
-            
-            String sql = "insert into cliente(nome_cliente,sobrenome_cliente,cpf,rg,"
-                + "data_nascimento,estado_civil,genero,cep,uf,cidade,endereco,numero_residencia,"
-                + "bairro,complemento,ponto_referencia,telefone_fixo,celular,email) "
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ? , ? , ? , ? , ? , ?)";
-        
-        try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
-            ps.setString(1,txtNome.getText());
-            ps.setString(2,txtSobrenome.getText());
-            ps.setString(3,txtCpf.getText());
-            ps.setString(4,txtRg.getText());
-            ps.setDate(5, Date.valueOf(pickerDataNascimento.getValue()));
-            
-            int outroEstado = comboCivil.getSelectionModel().getSelectedIndex();
-        
-            if (outroEstado == 6) {
-                ps.setString(6,txtOutroEC.getText());
+            if (txtNome.getText().isBlank()|| txtSobrenome.getText().isEmpty() ||
+                    txtCpf.getText().isEmpty() || txtRg.getText().isEmpty() ||
+                    pickerDataNascimento.getValue() == null ||
+                    comboGenero.getValue() == null 
+                    ||comboCivil.getValue() == null 
+                    || txtCep.getText().isEmpty() || comboEstado.getValue() == null
+                    || txtCidade.getText().isEmpty() || txtEndereco.getText().isEmpty()
+                    || txtEnderecoNum.getText().isEmpty() || txtBairro.getText().isEmpty()
+                    || txtEmail.getText().isEmpty()) {
+                
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro na validação do cadastro");
+                alert.setHeaderText("Campos obrigatórios");
+                alert.setContentText("Falta preencher campos obrigatórios \nCampos obrigatorios"
+                    + " tem um * acima do campo");
+                
+              alert.showAndWait();
             }else{
-                ps.setString(6, (String) comboCivil.getSelectionModel().getSelectedItem());
-            }
-            
-            int outroGenero = comboGenero.getSelectionModel().getSelectedIndex();
-        
-            if(outroGenero == 4){
-                ps.setString(7,txtOutroGenero.getText());
+         
+                String sql = "insert into cliente(nome_cliente,sobrenome_cliente,cpf,rg,"
+                    + "data_nascimento,estado_civil,genero,cep,uf,cidade,endereco,numero_residencia,"
+                    + "bairro,complemento,ponto_referencia,telefone_fixo,celular,email) "
+                    + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ? , ? , ? , ? , ? , ?)";
 
-            }else {
-                ps.setString(7, (String) comboGenero.getSelectionModel().getSelectedItem());
-            }
-            
-            ps.setString(8,txtCep.getText());
-            ps.setString(9, (String) comboEstado.getSelectionModel().getSelectedItem());
-            ps.setString(10,txtCidade.getText());
-            ps.setString(11,txtEndereco.getText());
-            
-            Integer numeroResidencia = Integer.parseInt(txtEnderecoNum.getText());
-                    
-            ps.setInt(12,numeroResidencia);
-            ps.setString(13,txtBairro.getText());
-            ps.setString(14,txtComplemento.getText());
-            ps.setString(15,txtPontoReferencia.getText());
-            ps.setString(16,txtTelefoneFixo.getText());
-            ps.setString(17,txtCelular.getText());
-            ps.setString(18,txtEmail.getText());
-            
-            ps.execute();
-            
-            limparTela();
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        } else {
-            String sql = "update cliente set nome_cliente = ?, sobrenome_cliente = ?,"
-                    + "cpf = ?, rg = ?, data_nascimento = ?, estado_civil = ?, genero = ?, "
-                    + "cep = ?, uf = ?, cidade = ?, endereco = ?, numero_residencia = ?, "
-                    + "bairro = ?, complemento = ?, ponto_referencia = ?, telefone_fixo = ?, "
-                    + "celular = ?, email = ? where id_cliente = ?";
-            
-            try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
-                ps.setString(1, txtNome.getText());
-                ps.setString(2,txtSobrenome.getText());
-                ps.setString(3,txtCpf.getText());
-                ps.setString(4,txtRg.getText());
-                ps.setDate(5, Date.valueOf(pickerDataNascimento.getValue()));
+                try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+                    ps.setString(1,txtNome.getText());
+                    ps.setString(2,txtSobrenome.getText());
+                    ps.setString(3,txtCpf.getText());
+                    ps.setString(4,txtRg.getText());
+                    ps.setDate(5, Date.valueOf(pickerDataNascimento.getValue()));
 
-                int outroEstado = comboCivil.getSelectionModel().getSelectedIndex();
+                    int outroEstado = comboCivil.getSelectionModel().getSelectedIndex();
 
-                if (outroEstado == 6) {
-                    ps.setString(6,txtOutroEC.getText());
-                }else{
-                    ps.setString(6, (String) comboCivil.getSelectionModel().getSelectedItem());
+                    if (outroEstado == 6) {
+                        ps.setString(6,txtOutroEC.getText());
+                    }else{
+                        ps.setString(6, (String) comboCivil.getSelectionModel().getSelectedItem());
+                    }
+
+                    int outroGenero = comboGenero.getSelectionModel().getSelectedIndex();
+
+                    if(outroGenero == 4){
+                        ps.setString(7,txtOutroGenero.getText());
+
+                    }else {
+                        ps.setString(7, (String) comboGenero.getSelectionModel().getSelectedItem());
+                    }
+
+                    ps.setString(8,txtCep.getText());
+                    ps.setString(9, (String) comboEstado.getSelectionModel().getSelectedItem());
+                    ps.setString(10,txtCidade.getText());
+                    ps.setString(11,txtEndereco.getText());
+
+                    Integer numeroResidencia = Integer.parseInt(txtEnderecoNum.getText());
+
+                    ps.setInt(12,numeroResidencia);
+                    ps.setString(13,txtBairro.getText());
+                    ps.setString(14,txtComplemento.getText());
+                    ps.setString(15,txtPontoReferencia.getText());
+                    ps.setString(16,txtTelefoneFixo.getText());
+                    ps.setString(17,txtCelular.getText());
+                    ps.setString(18,txtEmail.getText());
+
+                    ps.execute();
+
+                    limparTela();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
-                int outroGenero = comboGenero.getSelectionModel().getSelectedIndex();
-
-                if(outroGenero == 4){
-                    ps.setString(7,txtOutroGenero.getText());
-
-                }else {
-                    ps.setString(7, (String) comboGenero.getSelectionModel().getSelectedItem());
                 }
+                } else {
+            if (txtNome.getText().isBlank()|| txtSobrenome.getText().isEmpty() ||
+                    txtCpf.getText().isEmpty() || txtRg.getText().isEmpty() ||
+                    pickerDataNascimento.getValue() == null ||
+                    comboGenero.getValue() == null 
+                    ||comboCivil.getValue() == null 
+                    || txtCep.getText().isEmpty() || comboEstado.getValue() == null
+                    || txtCidade.getText().isEmpty() || txtEndereco.getText().isEmpty()
+                    || txtEnderecoNum.getText().isEmpty() || txtBairro.getText().isEmpty()
+                    || txtEmail.getText().isEmpty()) {
+                
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro na validação do cadastro");
+                alert.setHeaderText("Campos obrigatórios");
+                alert.setContentText("Falta preencher campos obrigatórios \nCampos obrigatorios"
+                    + " tem um * acima do campo");
+                
+              alert.showAndWait();
+            }else{
 
-                ps.setString(8,txtCep.getText());
-                ps.setString(9, (String) comboEstado.getSelectionModel().getSelectedItem());
-                ps.setString(10,txtCidade.getText());
-                ps.setString(11,txtEndereco.getText());
+                String sql = "update cliente set nome_cliente = ?, sobrenome_cliente = ?,"
+                        + "cpf = ?, rg = ?, data_nascimento = ?, estado_civil = ?, genero = ?, "
+                        + "cep = ?, uf = ?, cidade = ?, endereco = ?, numero_residencia = ?, "
+                        + "bairro = ?, complemento = ?, ponto_referencia = ?, telefone_fixo = ?, "
+                        + "celular = ?, email = ? where id_cliente = ?";
 
-                Integer numeroResidencia = Integer.parseInt(txtEnderecoNum.getText());
+                try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+                    ps.setString(1, txtNome.getText());
+                    ps.setString(2,txtSobrenome.getText());
+                    ps.setString(3,txtCpf.getText());
+                    ps.setString(4,txtRg.getText());
+                    ps.setDate(5, Date.valueOf(pickerDataNascimento.getValue()));
 
-                ps.setInt(12,numeroResidencia);
-                ps.setString(13,txtBairro.getText());
-                ps.setString(14,txtComplemento.getText());
-                ps.setString(15,txtPontoReferencia.getText());
-                ps.setString(16,txtTelefoneFixo.getText());
-                ps.setString(17,txtCelular.getText());
-                ps.setString(18,txtEmail.getText());
-                ps.setInt(19, idEdição);
+                    int outroEstado = comboCivil.getSelectionModel().getSelectedIndex();
 
-                ps.execute();
+                    if (outroEstado == 6) {
+                        ps.setString(6,txtOutroEC.getText());
+                    }else{
+                        ps.setString(6, (String) comboCivil.getSelectionModel().getSelectedItem());
+                    }
 
-                limparTela();
-                estaEditando = false;
-                idEdição = null;
+                    int outroGenero = comboGenero.getSelectionModel().getSelectedIndex();
+
+                    if(outroGenero == 4){
+                        ps.setString(7,txtOutroGenero.getText());
+
+                    }else {
+                        ps.setString(7, (String) comboGenero.getSelectionModel().getSelectedItem());
+                    }
+
+                    ps.setString(8,txtCep.getText());
+                    ps.setString(9, (String) comboEstado.getSelectionModel().getSelectedItem());
+                    ps.setString(10,txtCidade.getText());
+                    ps.setString(11,txtEndereco.getText());
+
+                    Integer numeroResidencia = Integer.parseInt(txtEnderecoNum.getText());
+
+                    ps.setInt(12,numeroResidencia);
+                    ps.setString(13,txtBairro.getText());
+                    ps.setString(14,txtComplemento.getText());
+                    ps.setString(15,txtPontoReferencia.getText());
+                    ps.setString(16,txtTelefoneFixo.getText());
+                    ps.setString(17,txtCelular.getText());
+                    ps.setString(18,txtEmail.getText());
+                    ps.setInt(19, idEdição);
+
+                    ps.execute();
+
+                    limparTela();
+                    estaEditando = false;
+                    idEdição = null;
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                App.abrirTelaListagemCliente();
+                buttonCancelarEdicao.setVisible(false);
             }
-            App.abrirTelaListagemCliente();
-            buttonCancelarEdicao.setVisible(false);
         }
-
     } 
 
     @FXML

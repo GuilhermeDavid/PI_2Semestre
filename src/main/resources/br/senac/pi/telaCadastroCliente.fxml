@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.pi.TelaCadastroClienteController">
    <children>
-      <TitledPane animated="false" collapsible="false" prefHeight="263.0" prefWidth="712.0" text="Informações Pessoais" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TitledPane animated="false" collapsible="false" prefHeight="263.0" prefWidth="712.0" text="Informações Pessoais" AnchorPane.bottomAnchor="637.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="720.0">
                <children>
@@ -34,7 +34,7 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutY="312.0" prefHeight="239.0" prefWidth="723.0" text="Endereço" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TitledPane animated="false" collapsible="false" layoutY="312.0" prefHeight="239.0" prefWidth="723.0" text="Endereço" AnchorPane.bottomAnchor="349.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="680.0">
                <children>
@@ -57,7 +57,7 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <TitledPane animated="false" collapsible="false" layoutY="609.0" prefHeight="137.0" prefWidth="1160.0" text="Contato" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <TitledPane animated="false" collapsible="false" layoutY="609.0" prefHeight="137.0" prefWidth="1160.0" text="Contato" AnchorPane.bottomAnchor="154.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -70,7 +70,7 @@
         </content>
       </TitledPane>
       <Button fx:id="buttonCancelarEdicao" layoutX="26.0" layoutY="814.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="135.0" text="Cancelar Edição" visible="false" AnchorPane.leftAnchor="26.0" />
-      <Button layoutX="818.0" layoutY="814.0" mnemonicParsing="false" onAction="#finalizarCadastro" prefHeight="25.0" prefWidth="268.0" text="Salvar" AnchorPane.rightAnchor="14.0" />
-      <Button layoutX="679.0" layoutY="814.0" mnemonicParsing="false" onAction="#limpar" prefHeight="25.0" prefWidth="104.0" text="Limpar" AnchorPane.rightAnchor="317.0" />
+      <Button layoutX="818.0" layoutY="814.0" mnemonicParsing="false" onAction="#finalizarCadastro" prefHeight="25.0" prefWidth="268.0" text="Salvar" AnchorPane.bottomAnchor="61.0" AnchorPane.rightAnchor="14.0" />
+      <Button layoutX="679.0" layoutY="814.0" mnemonicParsing="false" onAction="#limpar" prefHeight="25.0" prefWidth="104.0" text="Limpar" AnchorPane.bottomAnchor="61.0" AnchorPane.rightAnchor="317.0" />
    </children>
 </AnchorPane>
