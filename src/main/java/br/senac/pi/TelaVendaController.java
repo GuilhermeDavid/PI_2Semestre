@@ -4,12 +4,12 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -77,6 +77,8 @@ public class TelaVendaController implements Initializable {
         colunaProduto.setCellValueFactory(new PropertyValueFactory("produto"));
         colunaQtd.setCellValueFactory(new PropertyValueFactory("quant"));
         colunaPreco.setCellValueFactory(new PropertyValueFactory("preco"));
+        
+        pickerDataVenda.setValue(LocalDate.now());
   
     }    
 
@@ -132,8 +134,9 @@ public class TelaVendaController implements Initializable {
                 int estoque = rs.getInt("quantidade");
                 
                 if (qntProduto > estoque) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setContentText("Não há produtos suficentes para efetuar esse compra\nO estoque desse produto é de " +  rs.getInt("quantidade")
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Não há produtos suficentes para efetuar esse compra\nO estoque desse produto é de " 
+                            +  rs.getInt("quantidade")
                     + "\nE o cliente deseja " + qntProduto);
                     alert.showAndWait();              
                 }else{              
@@ -141,7 +144,6 @@ public class TelaVendaController implements Initializable {
                         rs.getString("nome_produto"), 
                         Integer.parseInt(txtQnt.getText()), 
                         precoProduto);
-
 
                         tabelaVenda.getItems().add(ltv);
 
@@ -198,7 +200,7 @@ public class TelaVendaController implements Initializable {
             
             if (rsKeys.next()) {
                 int idVenda = rsKeys.getInt(1);
-                registarQuartosAlugados(idVenda);
+                registarVenda(idVenda);
                 decrementarEstoque();
                 cancelar(event);
                 
@@ -213,7 +215,7 @@ public class TelaVendaController implements Initializable {
         }
     }
     
-    private void registarQuartosAlugados(int idVenda){
+    private void registarVenda(int idVenda){
         for (int i = 0; i < tabelaVenda.getItems().size(); i++) {
             String sql = "insert into venda_produto(id_venda, id_produto, quantidade, preco) "
                     + "values (?, ?, ?, ?)";
@@ -281,8 +283,7 @@ public class TelaVendaController implements Initializable {
         tabelaVenda.getItems().clear();     
         comboFormaPagamento.setValue(null);
         comboParcelas.setValue(null);
-        pickerDataVenda.setValue(null);
-       
+   
     }
     
     private void limpar(){

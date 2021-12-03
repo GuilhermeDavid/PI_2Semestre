@@ -12,10 +12,5 @@ public class DB {
                 "jdbc:sqlserver://localhost:1433;databaseName=projeto_integrador;user=uprojetointegrador;password=projetosantos6263");
         
         return conexao;
-    }
-    /*public static void main(String[] args) throws Exception {
-        connect();
-        System.out.println("Conectado");   
-    }*/
-    
+    }  
 }

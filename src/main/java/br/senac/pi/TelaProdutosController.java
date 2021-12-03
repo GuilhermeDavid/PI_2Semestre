@@ -29,7 +29,7 @@ public class TelaProdutosController implements Initializable {
     @FXML
     private TableColumn<LinhaTabelaProdutos, Integer> colunaQuantidade;
     @FXML
-    private TableColumn<LinhaTabelaProdutos, Double> colunaPreco;
+    private TableColumn<LinhaTabelaProdutos, Float> colunaPreco;
     @FXML
     private TextField txtNomeProduto;
     @FXML
@@ -106,7 +106,7 @@ public class TelaProdutosController implements Initializable {
                 ps.setString(3, txtMarcaProduto.getText());
                 ps.setString(4, txtTipoProduto.getText());
                 ps.setInt(5, quantProduto);
-                ps.setDouble(6, precoProduto);
+                ps.setFloat(6, precoProduto);
                 ps.setInt(7, idEdicao);
                 
                 ps.execute();
@@ -115,8 +115,9 @@ public class TelaProdutosController implements Initializable {
                 estaEditando = false;
                 idEdicao = null;
                 listarProdutos();
-               
                 
+                buttonCancelarEdicao.setVisible(estaEditando);
+                              
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -145,6 +146,9 @@ public class TelaProdutosController implements Initializable {
                     listarProdutos();
 
                 } catch (Exception e) {
+                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Esse produto não pode ser excluído, pois já existe uma compra registrada nele");
+                alert.showAndWait();
                     e.printStackTrace();
                 }
             }else{
@@ -226,7 +230,7 @@ public class TelaProdutosController implements Initializable {
             
             String quantidade = Integer.toString(tabelaProdutos.getSelectionModel().getSelectedItem().getQuantidade());
 
-            String preco = Double.toString(tabelaProdutos.getSelectionModel().getSelectedItem().getPreco());
+            String preco = Float.toString(tabelaProdutos.getSelectionModel().getSelectedItem().getPreco());
 
             txtNomeProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getNome());
             txtMarcaProduto.setText(tabelaProdutos.getSelectionModel().getSelectedItem().getMarca());
@@ -240,6 +244,8 @@ public class TelaProdutosController implements Initializable {
             buttonAddProduto.setText("Atualizar");
             
             buttonCancelarEdicao.setVisible(true);
+            
+            
         }
         
     }

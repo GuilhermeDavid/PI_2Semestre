@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="840.0" prefWidth="1160.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.senac.pi.TelaProdutosController">
@@ -26,7 +27,10 @@
       <Button layoutX="23.0" layoutY="246.0" mnemonicParsing="false" onAction="#excluirProduto" prefHeight="25.0" prefWidth="158.0" text="Excluir" />
       <Button fx:id="buttonCancelarEdicao" layoutX="202.0" layoutY="246.0" mnemonicParsing="false" onAction="#cancelarEdicao" prefHeight="25.0" prefWidth="158.0" text="Cancelar edição" visible="false" />
       <Button layoutX="580.0" layoutY="246.0" mnemonicParsing="false" onAction="#editarProduto" prefHeight="25.0" prefWidth="158.0" text="Editar" AnchorPane.rightAnchor="418.0" />
-      <Button layoutX="782.0" layoutY="246.0" mnemonicParsing="false" onAction="#consultProduto" prefHeight="25.0" prefWidth="158.0" text="Consultar" AnchorPane.rightAnchor="220.0" />
+      <Button layoutX="782.0" layoutY="246.0" mnemonicParsing="false" onAction="#consultProduto" prefHeight="25.0" prefWidth="158.0" text="Consultar" AnchorPane.rightAnchor="220.0">
+         <tooltip>
+            <Tooltip text="Pesquise por nome ou pelo código do produto." />
+         </tooltip></Button>
       <Button fx:id="buttonAddProduto" layoutX="973.0" layoutY="246.0" mnemonicParsing="false" onAction="#addProduto" prefHeight="25.0" prefWidth="158.0" text="Adicionar" AnchorPane.rightAnchor="22.0" />
       <TitledPane animated="false" collapsible="false" layoutX="1.0" prefHeight="208.0" prefWidth="1160.0" text="Produtos" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0">
         <content>

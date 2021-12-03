@@ -53,6 +53,6 @@
          </font>
       </Label>
       <Button layoutX="837.0" layoutY="783.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="134.0" text="Cancelar" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="170.0" />
-      <DatePicker fx:id="pickerDataVenda" layoutY="771.0" prefHeight="25.0" prefWidth="209.0" promptText="Data da venda" AnchorPane.bottomAnchor="44.0" />
+      <DatePicker fx:id="pickerDataVenda" disable="true" editable="false" layoutY="771.0" prefHeight="25.0" prefWidth="209.0" promptText="Data da venda" AnchorPane.bottomAnchor="44.0" />
    </children>
 </AnchorPane>

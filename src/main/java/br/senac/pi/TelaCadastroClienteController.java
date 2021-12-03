@@ -404,11 +404,13 @@ public class TelaCadastroClienteController implements Initializable {
     }
 
     @FXML
-    private void cancelar(ActionEvent event) {
+    private void cancelar(ActionEvent event) throws IOException {
         
         limparTela();
         idEdição = null;
         estaEditando = false;
         buttonCancelarEdicao.setVisible(false);
+        App.abrirTelaListagemCliente();
+        
     }
 }
