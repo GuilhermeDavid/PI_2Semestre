@@ -1,4 +1,4 @@
-*Projeto integrador*
+Projeto integrador
 
     Projeto referente ao segundo semestre do curso BSI no instituição Senac.
     Projeto tem como funcionalidade a execução de um software de caixa de uma loja de informática, 
@@ -20,7 +20,7 @@
  _Relatório:_
     Puxa um relatório de todas as vendas em um limite de até 30 dias.
 
-*Matériais e liguagens*
+Matériais e liguagens
 
     Para fazer o código foi utilizado o NetBeans e para criar e 
     manipular o banco de dados, foi-se utilizado o Management Studio.
